@@ -1,0 +1,187 @@
+/* ========== ТВОЙ ОСНОВНОЙ CSS ========== */
+/* Вставь сюда ВЕСЬ твой CSS код, который ты прислал */
+
+/* ========== ДОБАВЛЯЕМ СТИЛИ ДЛЯ НОВЫХ ФИЧ ========== */
+
+/* КНОПКА ПЕРЕЙТИ К ПОСТУ */
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.telegram-btn {
+    background: linear-gradient(135deg, #0088cc 0%, #0055cc 100%);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.telegram-btn:hover {
+    background: linear-gradient(135deg, #00aaff 0%, #0077ff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+}
+
+.telegram-btn i {
+    font-size: 1rem;
+}
+
+/* КНОПКА ЧИТАТЬ ДАЛЕЕ */
+.read-more-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--blue);
+}
+
+/* ФУЛЛ КОНТЕНТ (когда развернут) */
+.full-content {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-left: 3px solid var(--blue);
+}
+
+/* ИНФОРМАЦИЯ О ФИЧЕ */
+.feature-info {
+    background: linear-gradient(135deg, rgba(0, 122, 255, 0.1) 0%, rgba(255, 204, 0, 0.1) 100%);
+    border: 2px solid var(--blue);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.feature-info h4 {
+    color: var(--yellow);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ КНОПОК */
+@media (max-width: 768px) {
+    .post-actions {
+        flex-direction: column;
+    }
+    
+    .telegram-btn, .read-more-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* АНИМАЦИЯ ПОЯВЛЕНИЯ КНОПКИ */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.post-card .post-actions {
+    animation: slideIn 0.5s ease 0.3s both;
+}
+
+/* СТИЛЬ ДЛЯ ССЫЛКИ В ТЕЛЕГРАМ */
+.telegram-link {
+    color: #0088cc;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.telegram-link:hover {
+    text-decoration: underline;
+}
+
+/* БЕЙДЖ НОВОЙ ФИЧИ */
+.new-feature-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--red);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    animation: pulse 2s infinite;
+    z-index: 10;
+}
+
+/* УЛУЧШЕННЫЕ КАРТОЧКИ */
+.post-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.post-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ИКОНКА ТЕЛЕГРАМ В КАРТОЧКЕ */
+.telegram-icon {
+    color: #0088cc;
+    font-size: 1.2rem;
+}
+
+/* ТУЛТИП */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    border: 1px solid var(--blue);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

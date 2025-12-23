@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВОПРОС ЭПОХИ БОТ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="bg-animation">
+        <div class="shape red-shape"></div>
+        <div class="shape yellow-shape"></div>
+        <div class="shape blue-shape"></div>
+    </div>
+
+    <div class="container">
+        <!-- ШАПКА -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo">
+                    <div class="logo-circle red-circle"></div>
+                    <div class="logo-circle yellow-circle"></div>
+                    <div class="logo-circle blue-circle"></div>
+                </div>
+                <div class="header-text">
+                    <h1 class="main-title">
+                        <span class="title-red">ВОПРОС</span>
+                        <span class="title-yellow">ЭПОХИ</span>
+                        <span class="title-white">БОТ</span>
+                    </h1>
+                    <p class="tagline">Автоматическая публикация постов из Telegram-канала</p>
+                </div>
+            </div>
+            
+            <div class="status-panel">
+                <div class="status-item online">
+                    <i class="fas fa-circle"></i> Бот активен
+                    <div class="pulse"></div>
+                </div>
+                <a href="https://t.me/oprosokolopolit" target="_blank" class="tg-btn">
+                    <i class="fab fa-telegram"></i> Исходный канал
+                </a>
+            </div>
+        </header>
+
+        <!-- СТАТИСТИКА -->
+        <div class="stats-section">
+            <h2><i class="fas fa-chart-bar"></i> СТАТИСТИКА</h2>
+            <div class="stats-grid">
+                <div class="stat-card stat-red">
+                    <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Всего постов</h3>
+                    <div class="stat-number" id="total-posts">0</div>
+                </div>
+                <div class="stat-card stat-yellow">
+                    <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Статус</h3>
+                    <div class="stat-text">ОНЛАЙН</div>
+                    <div class="stat-subtext">в реальном времени</div>
+                </div>
+                <div class="stat-card stat-blue">
+                    <div class="stat-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Обновление</h3>
+                    <div class="stat-text">АВТО</div>
+                    <div class="stat-subtext">каждые 30 сек</div>
+                </div>
+                <div class="stat-card stat-black">
+                    <div class="stat-icon"><i class="fas fa-server"></i></div>
+                    <h3>Сервер</h3>
+                    <div class="stat-text">АКТИВЕН</div>
+                    <div class="stat-subtext">24/7 на Render</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ОБНОВЛЕНИЕ -->
+        <div class="update-section">
+            <button class="update-btn" id="refresh-btn">
+                <i class="fas fa-redo"></i>
+                ОБНОВИТЬ ПОСТЫ
+            </button>
+            <p class="update-info">
+                <i class="fas fa-info-circle"></i>
+                Следующее автообновление через: <span id="countdown">30</span> сек
+            </p>
+        </div>
+
+        <!-- ПОСТЫ -->
+        <div class="posts-section">
+            <div class="section-header">
+                <h2><i class="fas fa-newspaper"></i> ПОСЛЕДНИЕ ПОСТЫ</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-globe"></i> Все
+                    </button>
+                    <button class="filter-btn" data-filter="text">
+                        <i class="fas fa-font"></i> Текст
+                    </button>
+                    <button class="filter-btn" data-filter="photo">
+                        <i class="fas fa-image"></i> Фото
+                    </button>
+                    <button class="filter-btn" data-filter="video">
+                        <i class="fas fa-video"></i> Видео
+                    </button>
+                </div>
+            </div>
+            
+            <div class="posts-container" id="posts-container">
+                <!-- Посты появляются здесь -->
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Загружаем посты с сервера...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ИНФОРМАЦИЯ -->
+        <div class="info-section">
+            <div class="info-card">
+                <h3><i class="fas fa-info-circle"></i> ИНФОРМАЦИЯ О СИСТЕМЕ</h3>
+                <p>Эта система автоматически пересылает посты из Telegram-канала на сайт.</p>
+                <p><strong>🔥 НОВАЯ ФИЧА:</strong> Нажми "📤 Перейти к посту" чтобы открыть оригинал в Telegram!</p>
+                <p>Технологии: Python • Telegram Bot API • Flask • JavaScript • HTML/CSS</p>
+            </div>
+        </div>
+
+        <!-- ПОДВАЛ -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com" target="_blank" class="footer-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://render.com" target="_blank" class="footer-link">
+                        <i class="fas fa-cloud"></i> Render
+                    </a>
+                    <button class="footer-link" id="show-logs">
+                        <i class="fas fa-terminal"></i> Логи
+                    </button>
+                </div>
+                <div class="footer-info">
+                    <p><i class="fas fa-external-link-alt"></i> Каждый пост имеет ссылку в Telegram</p>
+                    <p><i class="fas fa-sync-alt"></i> Обновляется автоматически</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 Вопрос Эпохи Бот. Все посты из канала <a href="https://t.me/oprosokolopolit">@oprosokolopolit</a>
+                <p class="refresh-info">Нажмите на кнопку "📤 Перейти к посту" для просмотра оригинала</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ПАНЕЛЬ ЛОГОВ -->
+    <div class="bot-panel" id="bot-panel">
+        <div class="bot-panel-content">
+            <button class="close-btn" id="close-panel">&times;</button>
+            <h3><i class="fas fa-terminal"></i> СИСТЕМНЫЕ ЛОГИ</h3>
+            <div class="bot-log" id="bot-log">
+                <div class="log-line info">[12:00:00] Система запущена</div>
+                <div class="log-line success">[12:00:05] Бот подключен к каналу</div>
+                <div class="log-line info">[12:00:10] Загружено 15 постов</div>
+            </div>
+            <div class="bot-controls">
+                <button class="bot-btn" id="clear-logs">
+                    <i class="fas fa-trash"></i> Очистить логи
+                </button>
+                <button class="bot-btn" id="test-connection">
+                    <i class="fas fa-wifi"></i> Проверить связь
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
